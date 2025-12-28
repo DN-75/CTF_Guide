@@ -1,0 +1,23 @@
+---
+title: "Vigenere"
+name: "Vigenere"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-29"
+slug: "vigenere"
+---
+
+## Method
+
+1. Download the text file and copy the encoded message.
+2. Paste it into dCode’s Vigenère Cipher tool:
+   - https://www.dcode.fr/vigenere-cipher
+3. Set the key to:
+   - `CYLAB`
+4. Decode/decrypt the text.
+5. The output will contain the flag.
+
+## Vigenère Cipher (Description)
+
+The **Vigenère cipher** is a classical polyalphabetic substitution cipher. Instead of shifting every letter by the same amount (like a Caesar cipher), it uses a repeating **keyword** to determine a different shift for each character. Each letter of the key selects which Caesar shift to apply, making the ciphertext harder to solve than simple monoalphabetic ciphers—especially when the key is long and not reused.
+
