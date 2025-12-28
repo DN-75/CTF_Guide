@@ -1,0 +1,24 @@
+---
+title: "EVEN RSA CAN BE BROKEN???"
+name: "EVEN RSA CAN BE BROKEN???"
+difficulty: "easy"
+category: "PicoCTF / Cryptography"
+date: "2025-12-28"
+slug: "even-rsa-can-be-broken"
+---
+
+## Method
+
+1. Connect to the given instance using `netcat` by pasting the provided command into your terminal.
+2. The service will give you the RSA values you need (commonly `n`, `e`, and a ciphertext `c`).
+3. Open dCode’s RSA Cipher tool:
+   - https://www.dcode.fr/rsa-cipher
+4. Enter the relevant details into the relevant fields (for example: modulus `n`, exponent `e`, ciphertext `c`, and any other parameters the challenge provides).
+5. Decrypt/solve using the tool’s result.
+6. The output will contain the flag.
+
+## Notes
+
+- Copy/paste values carefully (no extra spaces/newlines).
+- If dCode expects a different format (hex vs decimal), convert or switch format to match the challenge values.
+

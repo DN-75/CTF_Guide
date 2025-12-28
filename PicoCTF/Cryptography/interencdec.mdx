@@ -1,0 +1,38 @@
+---
+title: "interencdec"
+name: "interencdec"
+difficulty: "easy"
+category: "PicoCTF / Cryptography"
+date: "2025-12-28"
+slug: "interencdec"
+---
+
+## Method
+
+1. Download the provided file and open it with Notepad (or any text editor).
+2. Copy the hash/string from the file.
+3. Decode it using Base64:
+   - https://www.base64decode.org/
+4. The decoded output will look something like:
+
+   `b'd3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzg5MGsyMzc5fQ=='`
+
+5. Copy the middle Base64 part (the part that starts with `d` and ends with `=`). Example:
+
+   `d3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzg5MGsyMzc5fQ==`
+
+   > If you copied it without the trailing `==`, add the padding back and try again.
+
+6. Decode that Base64 string again. You should get flag-like content, for example:
+
+   `wpjvJAM{jhlzhy_k3jy9wa3k_890k2379}`
+
+7. This is still encrypted (Caesar cipher). Paste it into dCode’s Caesar Cipher tool:
+   - https://www.dcode.fr/caesar-cipher
+8. Use **brute force** (try all shifts) until you see a readable picoCTF-style flag, then submit it.
+
+## Notes
+
+- Be careful not to include the leading `b'` or trailing `'` characters from the Python bytes-looking output.
+- If the second Base64 decode fails, your copied string likely missed padding (`=` or `==`) or includes whitespace.
+
