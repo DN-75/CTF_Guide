@@ -1,0 +1,51 @@
+---
+title: "basic-mod2"
+name: "basic-mod2"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-28"
+slug: "basic-mod2"
+---
+
+## Method
+
+1. Download the provided file and extract the list of numbers.
+2. Compute the **modular inverse** of each number (mod 41) using this script:
+
+```python
+def mod_inverse(a, m):
+    m0 = m
+    x0, x1 = 0, 1
+
+    if m == 1:
+        return 0
+
+    while a > 1:
+        q = a // m
+        a, m = m, a % m
+        x0, x1 = x1 - q * x0, x0
+
+    return x1 + m0 if x1 < 0 else x1
+
+string = "268 413 438 313 426 337 272 188 392 338 77 332 139 113 92 239 247 120 419 72 295 190 131"
+lst = list(map(int, string.split(" ")))
+
+out = []
+for i in lst:
+    out.append(mod_inverse(i, 41))
+
+print(out)
+```
+
+3. Map the resulting numbers to characters using this character set:
+   - **1–26** → `a`–`z`
+   - **27–36** → `0`–`9`
+   - **37** → `_`
+4. Wrap the decrypted message in the flag format:
+
+`picoCTF{...}`
+
+## Notes
+
+- If you get values outside the mapping range, re-check that you’re taking the inverse **mod 41** and that the input numbers were copied correctly.
+
