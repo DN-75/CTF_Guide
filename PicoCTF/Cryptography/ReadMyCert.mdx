@@ -1,0 +1,30 @@
+---
+title: "ReadMyCert"
+name: "ReadMyCert"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-28"
+slug: "readmycert"
+---
+
+## Method
+
+1. Download the provided `.crt` file.
+2. In a Linux terminal, read/inspect it using OpenSSL. For example:
+
+```bash
+openssl req -in yourfile.csr -noout -text
+```
+
+3. In the command output, you will find the flag.
+
+## Notes
+
+- If your file is a **certificate** (`.crt`) rather than a **CSR** (`.csr`), this alternative command is commonly used:
+
+```bash
+openssl x509 -in yourfile.crt -noout -text
+```
+
+- Copy the flag exactly (watch for extra whitespace).
+
