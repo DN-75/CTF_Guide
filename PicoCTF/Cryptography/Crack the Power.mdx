@@ -1,0 +1,46 @@
+---
+title: "Crack the Power"
+name: "Crack the Power"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-28"
+slug: "crack-the-power"
+---
+
+## Method
+
+1. Download the provided text file and analyze its contents.
+2. Notice that the RSA public exponent `e` is small.
+3. When `e` is small and the message is not padded (and is small enough), RSA can sometimes be decrypted by taking the **`e`-th root** of the ciphertext `c`.
+4. To compute the `e`-th integer root, you can use the following Python script (example uses `e = 20`).
+
+```python
+import gmpy2
+
+# Put your ciphertext value here (usually denoted as c)
+C = int("Put c value here")
+
+e = 20
+
+root, exact = gmpy2.iroot(C, e)
+
+print(root)
+print("Exact root:", exact)
+
+if exact:
+    m = root
+
+    byte_length = (m.bit_length() + 7) // 8
+    plaintext_bytes = m.to_bytes(byte_length, byteorder="big")
+
+    print(plaintext_bytes)
+```
+
+5. If `Exact root: True`, the plaintext bytes should contain the flag (or a flag-like string). Submit it.
+
+## Notes
+
+- The value you take the root of is typically the ciphertext `c` (not `n`).
+- This approach commonly works when `m^e < n` and there is **no padding**.
+- If `exact` is `False`, the plaintext is not a perfect `e`-th power; you may need a different approach.
+
