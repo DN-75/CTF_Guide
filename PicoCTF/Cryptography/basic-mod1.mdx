@@ -1,0 +1,41 @@
+---
+title: "basic-mod1"
+name: "basic-mod1"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-29"
+slug: "basic-mod1"
+---
+
+## Method
+
+1. Download the provided text file and copy the encoded message (the numbers).
+2. Paste the numbers into the following Python script and run it:
+
+```python
+string = "165 248 94 346 299 73 198 221 313 137 205 87 336 110 186 69 223 213 216 216 177 138"
+
+lst = list(map(int, string.split(" ")))
+
+flag = []
+for i in lst:
+    flag.append(i % 37)
+
+mapper = "abcdefghijklmnopqrstuvwxyz0123456789_"
+
+result = ""
+for i in flag:
+    result += mapper[i]
+
+print(result)
+```
+
+3. The script prints the decoded message. Wrap it in the flag format:
+
+`picoCTF{...}`
+
+## Notes
+
+- This uses modulo **37** and a custom alphabet: `a-z` + `0-9` + `_`.
+- If you get an “index out of range” error, re-check that you used `% 37` and copied the numbers correctly.
+
