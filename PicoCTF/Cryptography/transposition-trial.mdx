@@ -1,0 +1,23 @@
+---
+title: "transposition-trial"
+name: "transposition-trial"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-29"
+slug: "transposition-trial"
+---
+
+## Method
+
+1. Download the provided text file and copy the encoded message.
+2. Paste it into the transposition tool:
+   - https://tholman.com/other/transposition/
+3. Adjust the settings:
+   - Set the **key** to `3`
+   - Reorder the columns by moving the **3rd column to the 1st column**
+4. The decoded output will reveal the flag.
+
+## Transposition-Trial (Description)
+
+This challenge uses a **transposition cipher**, where the characters are not changed, but their **positions are rearranged** according to a key (often by writing text into columns and reading them out in a different order). By setting the correct key length and restoring the correct column order (here, moving column 3 to column 1), you reverse the permutation and recover the original plaintext/flag.
+

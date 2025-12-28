@@ -1,0 +1,26 @@
+---
+title: "rail-fence"
+name: "rail-fence"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-28"
+slug: "rail-fence"
+---
+
+## Method
+
+1. Download the text file and copy the encoded text.
+2. Paste it into the Rail Fence Cipher tool on Cryptii:
+   - https://cryptii.com/pipes/rail-fence-cipher
+3. Set:
+   - **Key (Rails):** `4`
+   - **Offset:** `0`
+4. Decode/decrypt to get the plaintext.
+5. Wrap the decoded message in the flag format:
+
+`picoCTF{...}`
+
+## Rail Fence Cipher (Description)
+
+The **Rail Fence cipher** is a classical transposition cipher. Instead of substituting letters, it **rearranges** them by writing the message in a zig-zag pattern across a fixed number of “rails” (rows), then reading off the rows to form the ciphertext. To decrypt, you reconstruct the zig-zag pattern using the same number of rails (key) and offset, then read the message in the original zig-zag order.
+
