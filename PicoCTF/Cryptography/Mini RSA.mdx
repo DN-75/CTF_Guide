@@ -1,0 +1,38 @@
+---
+title: "Mini RSA"
+name: "Mini RSA"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-29"
+slug: "mini-rsa"
+---
+
+## Method
+
+1. Download the provided `.txt` file and copy the RSA values it contains (commonly `n`, `e`, and ciphertext `c`).
+2. Open dCode’s RSA tool:
+   - https://www.dcode.fr/rsa-cipher
+3. Paste the relevant inputs into the relevant fields (e.g., modulus `n`, exponent `e`, ciphertext `c`).
+4. Decrypt/solve to obtain the plaintext.
+5. The plaintext output will contain the flag.
+
+## How RSA can be broken when `e` is small
+
+RSA encryption is typically:
+
+- Public key: `(n, e)`
+- Ciphertext: `c = m^e mod n`
+
+When `e` is **small**, there are a couple of common ways RSA can become vulnerable (especially in CTF challenges):
+
+1. **Low-exponent / no-padding attack (taking the e-th root)**
+   - If the message `m` is small enough and there is **no padding**, it’s possible that `m^e < n`.
+   - In that case, the modulo has no effect, so `c = m^e` as a normal integer.
+   - Then you can recover `m` by computing the **integer e-th root** of `c`.
+
+2. **Broadcast attack (Håstad’s attack)**
+   - If the *same* message `m` is sent to multiple recipients using the same small `e` but different moduli `n1, n2, ...`, you can combine the ciphertexts with the Chinese Remainder Theorem (CRT).
+   - This can reconstruct `m^e` as an integer, after which you take the e-th root to recover `m`.
+
+In real-world RSA, proper padding schemes (like OAEP) and good parameter choices prevent these attacks.
+
