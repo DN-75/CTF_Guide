@@ -1,0 +1,35 @@
+---
+title: "Mind your Ps and Qs"
+name: "Mind your Ps and Qs"
+difficulty: "medium"
+category: "PicoCTF / Cryptography"
+date: "2025-12-29"
+slug: "mind-your-ps-and-qs"
+---
+
+## Method
+
+1. Download the provided text file and identify the RSA values it contains (commonly `n`, `e`, and ciphertext `c`).
+2. Open dCode’s RSA tool:
+   - https://www.dcode.fr/rsa-cipher
+3. Paste the relevant values into the relevant fields (for example, modulus `n`, public exponent `e`, ciphertext `c`).
+4. Solve/decrypt to obtain the plaintext output.
+5. **Reverse** the output string (the challenge may have the plaintext backwards) to get the flag.
+
+## RSA (Description)
+
+**RSA** is a public-key cryptosystem based on the difficulty of factoring a large integer `n` that is the product of two primes:
+
+- Choose large primes `p` and `q`
+- Compute `n = p * q`
+- Pick public exponent `e`
+- Compute private exponent `d` such that `e*d ≡ 1 (mod φ(n))`, where `φ(n) = (p-1)(q-1)`
+
+Encryption is typically: `c = m^e mod n`, and decryption: `m = c^d mod n`.
+
+### Why small `n` is weak
+
+If `n` is too small (or `p` and `q` are too small/poorly chosen), an attacker can factor `n` into `p` and `q` using fast factoring methods. Once `p` and `q` are known, `φ(n)` and then the private key `d` can be computed, which breaks RSA.
+
+In practice, RSA security requires **large** `n` (commonly 2048 bits or more) and well-generated primes. Small `n` dramatically lowers the work needed to factor and makes the system vulnerable.
+
