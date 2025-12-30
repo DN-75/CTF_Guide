@@ -12,9 +12,9 @@ slug: "readmycert"
 1. Download the provided **CSR** file (`.csr`).
 2. In a Linux terminal, read/inspect it using OpenSSL:
 
-```bash
-openssl req -in yourfile.csr -noout -text
-```
+   ```bash
+   openssl req -in yourfile.csr -noout -text
+   ```
 
 3. In the command output, you will find the flag.
 
@@ -22,8 +22,8 @@ openssl req -in yourfile.csr -noout -text
 
 - If the provided file is a **certificate** (`.crt`) rather than a **CSR** (`.csr`), use:
 
-```bash
-openssl x509 -in yourfile.crt -noout -text
-```
+  ```bash
+  openssl x509 -in yourfile.crt -noout -text
+  ```
 
 - Copy the flag exactly (watch for extra whitespace).

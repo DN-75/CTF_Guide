@@ -32,4 +32,3 @@ Encryption is typically: `c = m^e mod n`, and decryption: `m = c^d mod n`.
 If `n` is too small (or `p` and `q` are too small/poorly chosen), an attacker can factor `n` into `p` and `q` using fast factoring methods. Once `p` and `q` are known, `φ(n)` and then the private key `d` can be computed, which breaks RSA.
 
 In practice, RSA security requires **large** `n` (commonly 2048 bits or more) and well-generated primes. Small `n` dramatically lowers the work needed to factor and makes the system vulnerable.
-

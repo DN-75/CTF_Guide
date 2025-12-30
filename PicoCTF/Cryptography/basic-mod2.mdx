@@ -27,8 +27,9 @@ def mod_inverse(a, m):
 
     return x1 + m0 if x1 < 0 else x1
 
+
 string = "268 413 438 313 426 337 272 188 392 338 77 332 139 113 92 239 247 120 419 72 295 190 131"
-lst = list(map(int, string.split(" ")))
+lst = list(map(int, string.split()))
 
 out = []
 for i in lst:
@@ -48,4 +49,3 @@ print(out)
 ## Notes
 
 - If you get values outside the mapping range, re-check that you’re taking the inverse **mod 41** and that the input numbers were copied correctly.
-
