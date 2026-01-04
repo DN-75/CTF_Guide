@@ -1,0 +1,22 @@
+---
+title: "vault-door-training"
+name: "vault-door-training"
+difficulty: "easy"
+category: "PicoCTF / Reverse Engineering"
+date: "2026-01-04"
+slug: "vault-door-training"
+---
+
+## Method
+
+1. Download the provided source code file from the challenge.
+2. Open it using a text editor (VS Code, Notepad++, etc.).
+3. Look for the first part of the flag (you’ll usually see something like `picoCTF{` directly in the code).
+4. Find the function that contains the remaining characters of the flag (often stored as a string/char array or built up character-by-character).
+5. Combine the first part and the second half to reconstruct the full flag, then submit it.
+
+## Notes
+
+- In beginner reverse engineering challenges, the flag is often already present in the source—your job is to locate the pieces and put them together.
+- If the second half is stored in an array, read it in order and watch out for extra characters like quotes or escape sequences.
+
