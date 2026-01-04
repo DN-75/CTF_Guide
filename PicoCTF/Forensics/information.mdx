@@ -1,0 +1,31 @@
+---
+title: "information"
+name: "information"
+difficulty: "easy"
+category: "PicoCTF / Forensics"
+date: "2026-01-03"
+slug: "information"
+---
+
+## Method
+
+1. Download the provided file.
+2. Inspect the file metadata using `exiftool`:
+
+   `exiftool <filename>`
+
+3. In the output, you should find a Base64-encoded string.
+4. Decode the Base64 string.
+5. The decoded output should contain the flag. Submit it.
+
+## Explanation (method + logic)
+
+- Many file types (images, PDFs, office documents, etc.) can store **metadata** such as author, comments, timestamps, and custom fields.
+- Metadata is a common hiding place in forensics challenges because its not usually visible when you open the file normally.
+- The hidden value is often Base64-encoded so it stays printable and easy to embed in metadata fields. After extracting it with `exiftool`, decoding Base64 reveals the original message/flag.
+
+## Notes
+
+- If the decoded output includes extra text, search for the `picoCTF{...}` pattern.
+- If Base64 decoding fails, re-copy the string exactly (padding `=` matters).
+

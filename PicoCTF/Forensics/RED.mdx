@@ -1,0 +1,30 @@
+---
+title: "RED"
+name: "RED"
+difficulty: "easy"
+category: "PicoCTF / Forensics"
+date: "2026-01-03"
+slug: "red"
+---
+
+## Method
+
+1. Download the provided image file (for example: `red.png`).
+2. Inspect the image for hidden data using `zsteg`:
+
+   `zsteg red.png`
+
+3. Look through the output for an interesting string. You should find a Base64-encoded value.
+4. Decode the Base64 text.
+5. The decoded output should contain the flag. Submit it.
+
+## Explanation (method + logic)
+
+- Some challenges hide data inside an image using **LSB steganography** (Least Significant Bit). This means secret bits are stored in the least important bits of pixel values, so the image looks normal to the eye.
+- `zsteg` is a tool that automatically checks many common bit-plane/encoding combinations in PNG/BMP images and prints anything that looks like embedded content.
+- The hidden payload is often encoded again (like Base64) so it becomes printable text and survives extraction cleanly. Once you Base64-decode it, you typically get the real message/flag.
+
+## Notes
+
+- If you're on Windows, run `zsteg` from Linux/WSL (it's commonly installed via Ruby gems).
+- If Base64 decoding fails, re-copy the exact string (watch for missing padding `=` or accidental whitespace).

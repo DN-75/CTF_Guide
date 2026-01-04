@@ -1,0 +1,25 @@
+---
+title: "Riddle Registry"
+name: "Riddle Registry"
+difficulty: "easy"
+category: "PicoCTF / Forensics"
+date: "2026-01-03"
+slug: "riddle-registry"
+---
+
+## Method
+
+1. Download the provided PDF file.
+2. Analyze the file metadata using `exiftool`:
+
+   `exiftool <filename>`
+
+3. In the output, you should find a Base64-encoded flag (or a Base64-encoded string that contains the flag).
+4. Decode the Base64 string.
+5. Submit the decoded flag.
+
+## Notes
+
+- If the decoded output contains extra text, look for the `picoCTF{...}` pattern.
+- If Base64 decoding fails, re-check that you copied the string exactly (no spaces/newlines missing padding like `=`).
+

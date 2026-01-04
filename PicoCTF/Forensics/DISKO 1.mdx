@@ -1,0 +1,29 @@
+---
+title: "DISKO 1"
+name: "DISKO 1"
+difficulty: "easy"
+category: "PicoCTF / Forensics"
+date: "2026-01-03"
+slug: "disko-1"
+---
+
+## Method
+
+1. Download the provided file.
+2. Extract the archive (if the download is a `.zip`/`.tar.*`) until you get the disk image file (commonly a `.dd` file, for example `disko-1.dd`).
+3. Search the disk image for human-readable strings and filter for the typical picoCTF flag prefix:
+
+   `strings disko-1.dd | grep pico`
+
+4. The output should include the flag. Copy it and submit.
+
+## Explanation (method + logic)
+
+- A `.dd` file is a *raw disk image* (a byte-for-byte copy of a drive/partition). It can contain many kinds of data: file contents, file system metadata, and even deleted remnants.
+- The `strings` tool scans the raw bytes and prints sequences that look like readable text. If the flag appears anywhere in the image (even inside a file stored on the disk, or leftover data), `strings` can often recover it.
+- Piping to `grep pico` filters the output down to lines that contain `pico`, which is useful because picoCTF flags usually look like `picoCTF{...}`.
+
+## Notes
+
+- If you're on Windows, you can run this using WSL (Ubuntu) or Git Bash.
+- If `grep` isn't available, you can still run `strings disko-1.dd` and then search the output for `picoCTF{`.

@@ -1,0 +1,28 @@
+---
+title: "Corrupted file"
+name: "Corrupted file"
+difficulty: "easy"
+category: "PicoCTF / Forensics"
+date: "2026-01-03"
+slug: "corrupted-file"
+---
+
+## Method
+
+1. Download the provided file.
+2. Open it in a hex editor and inspect the first bytes (the file header). For example, on Linux you can use:
+
+   `hexeditor <filename>`
+
+3. A JPEG file should start with the magic bytes:
+
+   `FF D8 FF`
+
+4. If the header is different/corrupted, edit the first bytes so the file begins with `FF D8 FF`.
+5. Save the file and rename it with a `.jpeg` extension.
+6. Open the repaired image file. The flag should be visible (or embedded in the image content). Submit the flag.
+
+## Notes
+
+- Any hex editor works (HxD on Windows, `hexeditor` on Linux, etc.). The key is fixing the *magic bytes* at the start of the file.
+- If the image still won't open, double-check you didn't shift bytes (overwrite in-place rather than inserting/removing).

@@ -1,0 +1,30 @@
+---
+title: "Hidden in plainsight"
+name: "Hidden in plainsight"
+difficulty: "easy"
+category: "PicoCTF / Forensics"
+date: "2026-01-03"
+slug: "hidden-in-plainsight"
+---
+
+## Method
+
+1. Download the provided image file.
+2. Check the image metadata using `exiftool`:
+
+   `exiftool <filename>`
+
+3. In the metadata output, you should find a Base64-encoded password meant for `steghide`.
+4. Decode the Base64 string to recover the password.
+5. Use `steghide` with the recovered password to extract embedded data from the image:
+
+   `steghide extract -sf <filename>`
+
+   When prompted for the passphrase, paste the decoded password.
+
+6. The extracted content should be written to a file in the same folder (commonly `flag.txt`). Open it and submit the flag.
+
+## Notes
+
+- If extraction fails, confirm you decoded the Base64 password correctly (padding `=` matters).
+- `steghide` is typically available on Linux (or via WSL on Windows). If you're on Windows, WSL is the easiest way to run it.

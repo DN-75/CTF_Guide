@@ -1,0 +1,31 @@
+---
+title: "CanYouSee"
+name: "CanYouSee"
+difficulty: "easy"
+category: "PicoCTF / Forensics"
+date: "2026-01-03"
+slug: "can-you-see"
+---
+
+## Method
+
+1. Download the provided file.
+2. Extract the contents of the file/archive until you get the image file.
+3. Analyze the image metadata using `exiftool`:
+
+   `exiftool <image_filename>`
+
+4. In the output, you should find a Base64-encoded string that contains the flag.
+5. Decode the Base64 string.
+6. Submit the decoded flag.
+
+## Explanation (method + logic)
+
+- Image files often contain **metadata** (EXIF/XMP/IPTC) such as camera model, timestamps, comments, and custom tags.
+- Because metadata isn't normally visible when viewing an image, it's a common place to hide short secrets like flags.
+- The flag is Base64-encoded to keep it readable/text-safe inside metadata fields. Once you extract it with `exiftool`, decoding Base64 reveals the original flag.
+
+## Notes
+
+- If the decoded output includes extra text, look for the `picoCTF{...}` pattern.
+- If Base64 decoding fails, re-copy the encoded string exactly (watch for missing padding `=` or extra whitespace).

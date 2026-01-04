@@ -1,0 +1,24 @@
+---
+title: "Flag in Flame"
+name: "Flag in Flame"
+difficulty: "easy"
+category: "PicoCTF / Forensics"
+date: "2026-01-03"
+slug: "flag-in-flame"
+---
+
+## Method
+
+1. Download the provided text file (for example: `logs.txt`).
+2. The hint suggests the text is Base64 for an image. Decode it into a PNG:
+
+   `base64 -d logs.txt > img2.png`
+
+3. Open `img2.png` in any image viewer.
+4. You should see a hex-encoded string in the image.
+5. Decode the hex string to retrieve the flag and submit it.
+
+## Notes
+
+- If `base64 -d` isn't available on your system, use Linux/WSL.
+- When hex decoding, make sure you copy the string exactly (no spaces/newlines unless your decoder supports them).
